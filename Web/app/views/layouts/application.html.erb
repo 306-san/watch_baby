@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>赤ちゃん見守りシステムβ(Version1.0.0)</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<header>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">赤ちゃん見守りシステム</a>
+      </div>
+        <ul class="nav navbar-nav">
+          <div class="collapse navbar-collapse" data-target="#collapse-target">
+            <% if user_signed_in? %>
+              <li class="navbar-brand">こんにちは、<%= current_user.username %>さん</li>
+            <% end %>
+          </div>
+        </ul>
+        <ul class="collapse navbar-collapse nav navbar-nav navbar-right" id="collapse-target">
+          <% if user_signed_in? %>
+            <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+            <li><%= link_to 'ログイン', new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+  </nav>
+</header>
+<body>
+<div class="container">
+<% if notice.present? %>
+  <div class="alert alert-dismissible alert-success">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    <p><%= notice %></p>
+  </div>
+<% end %>
+
+<% if alert.present? %>
+  <div class="alert alert-dismissable alert-danger">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <p><%= alert %></p>
+  </div>
+<% end %>
+
+  <div id="banner">
+    <%= yield %>
+  </div>
+</div>
+
+</body>
+</html>

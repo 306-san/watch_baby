@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  users_id: 1
+  temp: 1
+  humidity: 1
+  date: 2016-01-10
+
+two:
+  users_id: 1
+  temp: 1
+  humidity: 1
+  date: 2016-01-10
